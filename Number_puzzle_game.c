@@ -30,9 +30,8 @@ int main()
     system("cls");
     rules(a);
     system("cls");
-
     printf("\e[?25l");
-    while (moves)
+    while (moves>0)
     {
         display(a, name, moves);
 
@@ -83,12 +82,13 @@ int main()
             }
             break;
 
-        case 48:
+        default:
+        
             printf("\nThanks for playing , See you next time ..\n");
-            getch();
+            // getch();
             exit(0);
         }
-
+      fflush(stdin);
         clearScreen();
 
         if (check(a, b))
@@ -99,12 +99,12 @@ int main()
         }
     }
     if (moves == 0)
-    {
-        printf("You lose the game , Better Luck next time :( \n\n");
+    {   
+        system("cls");
+        printf("\n\n You lose the game , Better Luck next time :( \n\n");
+        getch();
     }
-
-    printf("\nThanks for playing , See you next time ..\n");
-
+ 
     getch();
     return 0;
 }
@@ -139,7 +139,7 @@ void rules(int (*a)[4])
     printf("\n\n\033[1;31m 2. You can move number at empty position only");
     printf("\n\033[1;31m 3. For each valid move :  Total number of moves get decreased by 1");
     printf("\n\033[1;31m 4. Winning Situation :  Number in a 4*4 matrix should be in order from 1 to 15");
-    printf("\n\033[1;31m 5. You can exit anytime by typing 00");
+    printf("\n\033[1;31m 5. You can exit anytime by typing 0");
     printf("\n\033[1;31m 6. Maximum moves are 300\n");
     printf("\n\033[1;31m *** If any invalid key is pressed then press tab and then press arrow key***\n");
     printf("    Winning  Condition  -\n");
@@ -179,7 +179,7 @@ void rules(int (*a)[4])
 void display(int (*a)[4], char *name, int moves)
 {
     int i, j;
-    printf("\n\n   Hello %s , Moves Remaining %d\n\n", name, moves);
+    printf("\n\n   Hello %s , Moves Remaining %d  \n\n", name, moves);
     for (i = 0; i < 28; i++)
     {
         printf("-");
